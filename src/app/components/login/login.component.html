@@ -1,61 +1,23 @@
-<div class="displayTable">
-  <div class="displayTableCell">
-    <div class="authBlock">
-      <h3>Sign In</h3>
-      <div class="formGroup">
-        <input
-          type="text"
-          class="formControl"
-          placeholder="Username"
-          #userName
-          required
-        />
-      </div>
-      <div class="formGroup">
-        <input
-          type="password"
-          class="formControl"
-          placeholder="Password"
-          #userPassword
-          required
-        />
-      </div>
-      <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup">
-        <input
-          type="button"
-          class="btn btnPrimary"
-          value="Log in"
-          (click)="authService.signIn(userName.value, userPassword.value)"
-        />
-      </div>
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-      <!-- Calling GoogleAuth Api from AuthService -->
-      <div class="formGroup">
-        <button
-          type="button"
-          class="btn googleBtn"
-          (click)="authService.googleAuth()"
-        >
-          <i class="fab fa-google-plus-g"></i>
-          Log in with Google
-        </button>
-      </div>
-      <div class="forgotPassword">
-        <span routerLink="/forgot-password">Forgot Password?</span>
-      </div>
-    </div>
-    <div class="redirectToLogin">
-      <span
-        >Don't have an account?<span
-          class="redirect"
-          routerLink="/register-user"
-        >
-          Sign Up</span
-        ></span
-      >
-    </div>
-  </div>
-</div>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Mileage Calculator</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form [formGroup]="loginForm">
+      <ion-list>
+        <ion-item>
+          <ion-input type="email" formControlName="email" required></ion-input>
+        </ion-item>
+        <ion-item
+          ><ion-input type="password" formControlName="password" required
+        /></ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col offset="4"><ion-button  (click)="onSubmit()"> Log in</ion-button></ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>
