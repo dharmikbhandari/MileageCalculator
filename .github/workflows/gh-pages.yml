@@ -27,7 +27,7 @@ jobs:
     #  run: npm run build:prod
       
     - name: Build
-      run: npm run build
+      run: npm run build:prod
 
     - name: Deploy
       if: success()
