@@ -31,4 +31,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 * How to run project?
     ng serve --host=0.0.0.0
+
+## Refrence Links
+* https://www.positronx.io/full-angular-firebase-authentication-system/
+
     
