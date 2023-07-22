@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { LoadingService } from './shared/services/loading.service';
+import { HelperService } from './shared/services/helper.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,16 @@ import { LoadingService } from './shared/services/loading.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  loadingService = inject(LoadingService);
+  helperService = inject(HelperService);
   title = 'mileageCalculator';
   height = 0;
   width = 0;
+  isSidenavOpen = false;
+  
+
+  toggleSidenav() {
+    this.isSidenavOpen = !this.isSidenavOpen;
+  }
 
   ngOnInit() {
     this.height = document.body.clientHeight;

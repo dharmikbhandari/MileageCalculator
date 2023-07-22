@@ -8,7 +8,8 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { LoadingService } from './loading.service';
+import { HelperService } from './helper.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -19,7 +20,7 @@ export class AuthService {
   ngZone = inject(NgZone);
   router = inject(Router);
   toastrService = inject(ToastrService);
-  loadingSerivce = inject(LoadingService);
+  helperService = inject(HelperService);
   constructor(
     
   ) {
@@ -38,20 +39,20 @@ export class AuthService {
   }
   // Sign in with email/password
   signIn(email: string, password: string) {
-    this.loadingSerivce.setLoading(true);
+    this.helperService.setLoading(true);
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.setUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
-            this.loadingSerivce.setLoading(false);
+            this.helperService.setLoading(false);
             this.router.navigate(['dashboard']);
           }
         });
       })
       .catch((error) => {
-        this.loadingSerivce.setLoading(false);
+        this.helperService.setLoading(false);
         this.toastrService.error(error.message, 'Error',{
           closeButton: true
         });

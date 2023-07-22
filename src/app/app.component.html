@@ -1,16 +1,30 @@
 <p>
   <mat-toolbar color="primary">
+    <button *ngIf="helperService.isMenuVisible$ | async" mat-icon-button (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
     <span>Mileage Calculator</span>
   </mat-toolbar>
 </p>
-<div class="container">
-  <router-outlet></router-outlet>
-  <div
-    class="overlay"
-    [style.height.px]="height"
-    [style.width.px]="width"
-    *ngIf="loadingService.isLoading$ | async"
-  >
-    <mat-spinner class="spinner"></mat-spinner>
-  </div>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav  mode="side" [opened]="isSidenavOpen">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard">Dashboard</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="container">
+      <router-outlet></router-outlet>
+      <div
+        class="overlay"
+        [style.height.px]="height"
+        [style.width.px]="width"
+        *ngIf="helperService.isLoading$ | async"
+      >
+        <mat-spinner class="spinner"></mat-spinner>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

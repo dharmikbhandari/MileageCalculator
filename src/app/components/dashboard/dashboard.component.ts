@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { HelperService } from 'src/app/shared/services/helper.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,4 +9,9 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class DashboardComponent {
   authService = inject(AuthService);
+  helperService = inject(HelperService);
+
+  constructor(){
+    this.helperService.setMenuVisible(true);
+  }
 }

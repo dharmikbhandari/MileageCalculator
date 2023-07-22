@@ -30,6 +30,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -61,6 +63,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatButtonModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatListModule,
 
     ToastrModule.forRoot(),
   ],
