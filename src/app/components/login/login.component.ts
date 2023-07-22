@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -14,25 +14,29 @@ import { UserService } from 'src/app/shared/services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   userServices = inject(UserService);
   authService = inject(AuthService);
   toastrService = inject(ToastrService);
   formBuilder = inject(FormBuilder);
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
 
-  constructor() {
+  ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.compose([Validators.required])],
     });
-
-    email = this.loginForm.controls['email'].value;
-    password = this.loginForm.controls['password'].value;
   }
-
+  handleError = (controlName: string, errorName: string) => {
+    return this.loginForm.controls[controlName].hasError(errorName);
+  };
   onSubmit() {
-    
-    this.authService.signIn(email, password);
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.authService.signIn(
+      this.loginForm?.value.email,
+      this.loginForm?.value.password
+    );
   }
 }

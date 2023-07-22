@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -45,13 +46,13 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-   
+
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-   
+
     BrowserAnimationsModule,
     MatCardModule,
     MatIconModule,
@@ -59,8 +60,9 @@ import { ToastrModule } from 'ngx-toastr';
     MatFormFieldModule,
     MatButtonModule,
     MatToolbarModule,
+    MatProgressSpinnerModule,
 
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
