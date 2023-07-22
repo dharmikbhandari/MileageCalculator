@@ -7,6 +7,9 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { HelperService } from './helper.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +19,8 @@ export class AuthService {
   afAuth = inject(AngularFireAuth);
   ngZone = inject(NgZone);
   router = inject(Router);
-
+  toastrService = inject(ToastrService);
+  helperService = inject(HelperService);
   constructor(
     
   ) {
@@ -35,18 +39,23 @@ export class AuthService {
   }
   // Sign in with email/password
   signIn(email: string, password: string) {
+    this.helperService.setLoading(true);
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.setUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
+            this.helperService.setLoading(false);
             this.router.navigate(['dashboard']);
           }
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.helperService.setLoading(false);
+        this.toastrService.error(error.message, 'Error',{
+          closeButton: true
+        });
       });
   }
   
@@ -61,7 +70,9 @@ export class AuthService {
         this.setUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.toastrService.error(error.message, 'Error',{
+          closeButton: true
+        });
       });
   }
   
@@ -81,7 +92,9 @@ export class AuthService {
         window.alert('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        window.alert(error);
+        this.toastrService.error(error.message, 'Error',{
+          closeButton: true
+        });
       });
   }
  
@@ -108,7 +121,9 @@ export class AuthService {
         this.setUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error);
+        this.toastrService.error(error.message, 'Error',{
+          closeButton: true
+        });
       });
   }
   /* Setting up user data when sign in with username/password, 
