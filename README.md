@@ -34,5 +34,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Refrence Links
 * https://www.positronx.io/full-angular-firebase-authentication-system/
+* https://www.npmjs.com/package/ngx-toastr
 
     

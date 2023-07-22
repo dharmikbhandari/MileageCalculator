@@ -7,6 +7,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,6 +17,7 @@ export class AuthService {
   afAuth = inject(AngularFireAuth);
   ngZone = inject(NgZone);
   router = inject(Router);
+  toastrService = inject(ToastrService);
 
   constructor(
     
@@ -46,7 +48,9 @@ export class AuthService {
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.toastrService.error(error.message, 'Error',{
+          closeButton: true
+        });
       });
   }
   
@@ -61,7 +65,9 @@ export class AuthService {
         this.setUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.toastrService.error(error.message, 'Error',{
+          closeButton: true
+        });
       });
   }
   
@@ -81,7 +87,9 @@ export class AuthService {
         window.alert('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        window.alert(error);
+        this.toastrService.error(error.message, 'Error',{
+          closeButton: true
+        });
       });
   }
  
@@ -108,7 +116,9 @@ export class AuthService {
         this.setUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error);
+        this.toastrService.error(error.message, 'Error',{
+          closeButton: true
+        });
       });
   }
   /* Setting up user data when sign in with username/password, 

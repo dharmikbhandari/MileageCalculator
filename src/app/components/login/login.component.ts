@@ -1,5 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -11,16 +17,22 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class LoginComponent {
   userServices = inject(UserService);
   authService = inject(AuthService);
+  toastrService = inject(ToastrService);
+  formBuilder = inject(FormBuilder);
+  loginForm: FormGroup;
 
-  loginForm = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl(),
-  });
+  constructor() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.compose([Validators.required])],
+    });
+
+    email = this.loginForm.controls['email'].value;
+    password = this.loginForm.controls['password'].value;
+  }
 
   onSubmit() {
-    this.authService.signIn(
-      this.loginForm.get('email')?.value,
-      this.loginForm.get('password')?.value
-    );
+    
+    this.authService.signIn(email, password);
   }
 }

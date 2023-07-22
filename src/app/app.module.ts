@@ -22,12 +22,15 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { AuthGuard } from './shared/guard/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//Material Design
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+
+    ToastrModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
