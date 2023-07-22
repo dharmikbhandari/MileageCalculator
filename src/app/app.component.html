@@ -5,4 +5,12 @@
 </p>
 <div class="container">
   <router-outlet></router-outlet>
+  <div
+    class="overlay"
+    [style.height.px]="height"
+    [style.width.px]="width"
+    *ngIf="loadingService.isLoading$ | async"
+  >
+    <mat-spinner class="spinner"></mat-spinner>
+  </div>
 </div>
