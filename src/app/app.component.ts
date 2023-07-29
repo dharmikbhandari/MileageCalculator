@@ -13,14 +13,7 @@ export class AppComponent implements OnInit {
   title = 'mileageCalculator';
   height = 0;
   width = 0;
-  isSidenavOpen = false;
-  
-
-  toggleSidenav() {
-    this.isSidenavOpen = !this.isSidenavOpen;
-  }
  
-
   ngOnInit() {
     this.height = document.body.clientHeight;
     this.width = document.body.clientWidth;

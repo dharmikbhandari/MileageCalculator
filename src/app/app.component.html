@@ -1,8 +1,16 @@
 <mat-sidenav-container fullscreen>
-  <mat-sidenav mode="side" [opened]="isSidenavOpen">
-    <mat-nav-list (click)="toggleSidenav()">
-      <a mat-list-item routerLink="/dashboard">Dashboard</a>
+  <mat-sidenav class="w-50" #sidenav>
+    <mat-nav-list>
+      <a mat-list-item (click)="sidenav.toggle()" routerLink="/dashboard">Dashboard</a>
       <a mat-list-item (click)="authService.signOut()">Logout</a>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            Configuarions
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-list-item (click)="sidenav.toggle()" routerLink="/configuration/fuel-config">Fuel</a>
+        </mat-nav-list>
+    </mat-expansion-panel>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -12,7 +20,7 @@
         <button
           *ngIf="helperService.isMenuVisible$ | async"
           mat-icon-button
-          (click)="toggleSidenav()"
+          (click)="sidenav.toggle()"
         >
           <mat-icon>menu</mat-icon>
         </button>

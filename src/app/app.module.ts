@@ -32,8 +32,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ToastrModule } from 'ngx-toastr';
+import { FuelConfigComponent } from './components/configuration/fuel-config/fuel-config.component';
+import { FuelConfigCreateComponent } from './components/configuration/fuel-config/fuel-config-create/fuel-config-create.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { ToastrModule } from 'ngx-toastr';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
+    FuelConfigComponent,
+    FuelConfigCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +70,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatProgressSpinnerModule,
     MatSidenavModule,
     MatListModule,
+    MatExpansionModule,
 
     ToastrModule.forRoot(),
   ],
