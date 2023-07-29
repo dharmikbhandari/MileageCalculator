@@ -33,6 +33,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { ToastrModule } from 'ngx-toastr';
 import { FuelConfigComponent } from './components/configuration/fuel-config/fuel-config.component';
@@ -73,6 +75,8 @@ import { FuelConfigCreateComponent } from './components/configuration/fuel-confi
     MatExpansionModule,
 
     ToastrModule.forRoot(),
+    MatGridListModule,
+    MatMenuModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
