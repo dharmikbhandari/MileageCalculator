@@ -3,22 +3,20 @@
     #drawer
     class="sidenav"
     fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [attr.role]="( isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item  routerLink="/dashboard">Dashboard</a>
+      <a mat-list-item routerLink="/dashboard">Dashboard</a>
       <a mat-list-item (click)="authService.signOut()">Logout</a>
       <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            Configuarions
-        </mat-expansion-panel-header>
+        <mat-expansion-panel-header> Configuarions </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item  routerLink="/configuration/fuel-config">Fuel</a>
+          <a mat-list-item routerLink="/configuration/fuel-config">Fuel</a>
         </mat-nav-list>
-    </mat-expansion-panel>
+      </mat-expansion-panel>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

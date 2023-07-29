@@ -148,6 +148,7 @@ export class AuthService {
   signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
+      this.helperService.setMenuVisible(false);
       this.router.navigate(['login']);
     });
   }
