@@ -39,6 +39,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ToastrModule } from 'ngx-toastr';
 import { FuelConfigComponent } from './components/configuration/fuel-config/fuel-config.component';
 import { FuelConfigCreateComponent } from './components/configuration/fuel-config/fuel-config-create/fuel-config-create.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { FuelConfigCreateComponent } from './components/configuration/fuel-confi
     VerifyEmailComponent,
     FuelConfigComponent,
     FuelConfigCreateComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
