@@ -51,7 +51,7 @@ import { LayoutComponent } from './layout/layout.component';
     VerifyEmailComponent,
     FuelConfigComponent,
     FuelConfigCreateComponent,
-    LayoutComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { AuthGuard } from './shared/guard/auth.guard';
 import { FuelConfigComponent } from './components/configuration/fuel-config/fuel-config.component';
 import { LayoutComponent } from './layout/layout.component';
+import { FuelConfigCreateComponent } from './components/configuration/fuel-config/fuel-config-create/fuel-config-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,6 +25,10 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'configuration/fuel-config', component: FuelConfigComponent },
+      {
+        path: 'configuration/fuel-config/create',
+        component: FuelConfigCreateComponent,
+      },
     ],
   },
 ];
